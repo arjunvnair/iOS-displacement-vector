@@ -1,14 +1,16 @@
 //
 //  Displacement Vector API.swift
-//  Displacement Vector API Tester
+//  Displacement Vector API
 //
-//  Created by Arjun Nair on 5/9/17.
 //  Copyright © 2017 Arjun Nair. All rights reserved.
 //
 
 import Foundation
 import CoreMotion
 
+/**
+    Construct an instance of this class at calibration
+*/
 public class DisplacementVectorCalculator
 {
     var pitch0: Double
@@ -28,7 +30,7 @@ public class DisplacementVectorCalculator
         velocityz = 0.0
     }
     /**
-        Calculates the displacement of iPhone based on the current motion state of the device and the seconds elapsed since last retrieval
+        Calculates the displacement of iPhone based on the current motion state of the device and the seconds elapsed since last retrieval (call this method frequently for more accuracy)
         @param deviceMotion current instance of CMDeviceMotion
 	@param timeInterval seconds elapsed since last retrieval (if no retrieval has been made, then this is seconds since construction/calibration)
 	@return vector noting the approximate rectangular displacement of the phone since last retrieval
@@ -50,6 +52,9 @@ public class DisplacementVectorCalculator
     }
 }
 
+/**
+    Stores three dimensional vector or point that can be operated on with +, -, *, / as usual
+*/
 public class ThreeDRectangularVector
 {
     var x, y, z: Double
