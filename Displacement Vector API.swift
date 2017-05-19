@@ -14,15 +14,10 @@ public class DisplacementVectorCalculator
     var pitch0: Double
     var roll0, yaw0: Double
     var velocityx, velocityy, velocityz: Double
-    init()
-    {
-        pitch0 = 0.0
-        roll0 = 0.0
-        yaw0 = 0.0
-        velocityx = 0.0
-        velocityy = 0.0
-        velocityz = 0.0
-    }
+    /**
+	Constructs and calibrates the calculator with the device state
+	@param deviceMotion the current state of the device's motion
+    */
     init(deviceMotion: CMDeviceMotion)
     {
         pitch0 = degrees(deviceMotion.attitude.pitch)
@@ -33,9 +28,10 @@ public class DisplacementVectorCalculator
         velocityz = 0.0
     }
     /**
+        Calculates the displacement of iPhone based on the current motion state of the device and the seconds elapsed since last retrieval
         @param deviceMotion current instance of CMDeviceMotion
-	      @param timeInterval seconds elapsed since last retrieval
-	      @return vector noting the approximate rectangular displacement of the phone since last retrieval
+	@param timeInterval seconds elapsed since last retrieval (if no retrieval has been made, then this is seconds since construction/calibration)
+	@return vector noting the approximate rectangular displacement of the phone since last retrieval
      */
     func getDisplacementVector(deviceMotion: CMDeviceMotion, timeInterval: Double) -> ThreeDRectangularVector
     {
