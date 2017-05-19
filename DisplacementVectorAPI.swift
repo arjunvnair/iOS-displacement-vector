@@ -82,8 +82,20 @@ public class ThreeDRectangularVector
         else if(phi > 180)
         {
             phi = 360 - phi
+	theta = 360 - theta
+        }
+        if(theta < 0)
+        {
+            theta += 360
+        }
+        else if(theta > 360)
+        {
+            theta -= 360
+        }
+        x = p * sin(phi) * cos(theta)
         y = p * sin(phi) * sin(theta)
         z = p * cos(phi)
+		
     }
 }
 
@@ -107,14 +119,3 @@ func degrees(radians: Double) -> Double
 {
     return 180 * radians/M_PI
 }
-            theta = 360 - theta
-        }
-        if(theta < 0)
-        {
-            theta += 360
-        }
-        else if(theta > 360)
-        {
-            theta -= 360
-        }
-        x = p * sin(phi) * cos(theta)
